@@ -1,0 +1,327 @@
+
+
+(function(globals) {
+
+  var django = globals.django || (globals.django = {});
+
+  
+  django.pluralidx = function(count) { return (count == 1) ? 0 : 1; };
+  
+
+  /* gettext library */
+
+  django.catalog = django.catalog || {};
+  
+  var newcatalog = {
+    "%(sel)s of %(cnt)s selected": [
+      "%(sel)s of %(cnt)s selected",
+      "%(sel)s of %(cnt)s selected"
+    ],
+    "3-digit number on the back of your card": "3-digit number on the back of your card",
+    "4-digit number on the back of your card": "4-digit number on the back of your card",
+    "6 a.m.": "6 a.m.",
+    "<br>This seems to be a valid postal code for %s. Click <div class=\"country-chooser-link jsCountryChooserButton\"><span>here</span></div> to find our service areas in %s.": "<br>This seems to be a valid postcode for %s. Click <div class=\"country-chooser-link jsCountryChooserButton\"><span>here</span></div> to find our service areas in %s.",
+    "ADDRESS LINE 1": "ADDRESS LINE 1",
+    "ADDRESS LINE 2": "ADDRESS LINE 2",
+    "Account Information": "Account Information",
+    "Address Book": "Address Book",
+    "Aligner Fit": "Aligner Fit",
+    "Aligners <strong>IN</strong>, natural bite, make sure we can see your upper and lower gum-line.": "Aligners <strong>IN</strong>, natural bite, make sure we can see your upper and lower gum-line.",
+    "Aligners <strong>OUT</strong> mouth open with tongue on the roof of your mouth, looking up, make sure we see your back molars.": "Aligners <strong>OUT</strong> mouth open with tongue on the roof of your mouth, looking up, make sure we see your back molars.",
+    "Aligners <strong>OUT</strong>, mouth open with tongue on the roof of your mouth, looking down, make sure we see your back molars.": "Aligners <strong>OUT</strong>, mouth open with tongue on the roof of your mouth, looking down, make sure we see your back molars.",
+    "Alternate Phone": "Alternative Phone",
+    "Are you sure you want to change tabs without saving the page first?": "Are you sure you want to change tabs without saving the page first?",
+    "Are you sure you want to remove the discount code?": "Are you sure you want to remove the discount code?",
+    "Austria": "Austria",
+    "Available %s": "Available %s",
+    "BROWSE": "BROWSE",
+    "Billing Address": "Billing Address",
+    "Billing Information": "Billing Information",
+    "Bite issues/midline issues": "Bite issues/midline issues",
+    "CITY": "CITY",
+    "CVC": "CVC",
+    "CVC is too short.": "CVC is too short.",
+    "CVC value is required.": "CVC value is required.",
+    "CVC value should be digits.": "CVC value should be digits.",
+    "Cancel": "Cancel",
+    "Card Details Required": "Card Details Required",
+    "Card Number": "Card Number",
+    "Choose": "Choose",
+    "Choose a time": "Choose a time",
+    "Choose all": "Choose all",
+    "Chosen %s": "Chosen %s",
+    "Click to choose all %s at once.": "Click to choose all %s at once.",
+    "Click to remove all chosen %s at once.": "Click to remove all chosen %s at once.",
+    "Date must be between 1 and 31.": "Date must be between 1 and 31.",
+    "Didn't wear aligners as expected": "Didn't wear aligners as expected",
+    "Direct mail": "Direct mail",
+    "EMAIL ADDRESS": "EMAIL ADDRESS",
+    "Email": "Email",
+    "Enter your %s to see if we serve your area.": "Enter your %s to see if we serve your area.",
+    "Error connecting to server.": "Error connecting to server.",
+    "Expiration date month is required.": "Expiration date month is required.",
+    "Expiration date month should be digits.": "Expiration date month should be digits.",
+    "Expiration date year is too short. It should have 4 digits.": "Expiration date year is too short. It should have 4 digits.",
+    "Expiration date year should be digits.": "Expiration date year should be digits.",
+    "FIRST NAME": "FIRST NAME",
+    "Filter": "Filter",
+    "Final result does match plan, but not happy with overall results": "Final result does match plan, but not happy with overall results",
+    "Final result doesn't match plan": "Final result doesn't match plan",
+    "Front Closed<br />(Aligners In)": "Front Closed<br />(Aligners In)",
+    "Front Closed<br />(Aligners Out)": "Front Closed<br />(Aligners Out)",
+    "Front teeth": "FRONT TEETH",
+    "Gapping between teeth and aligner": "Gapping between teeth and aligner",
+    "Germany": "Germany",
+    "Hang On\u2026": "Just a moment\u2026",
+    "Hide": "Hide",
+    "If the patient is under ": "If the patient is under ",
+    "If the patient is under %s, you need to be the guardian to continue.": "If the patient is under %s, you need to be the guardian to continue.",
+    "If you're under ": "If you're under ",
+    "If you're under %s, you cannot register. Please select \"this order is for somebody else\" to continue.": "If you're under %s, you cannot register. Please select \"this order is for somebody else\" to continue.",
+    "Impression Kit": "Impression Kit",
+    "Invalid email %s, This field cannot contain the following character: %s": [
+      "Invalid email %s, this field cannot contain the following character: %s",
+      "Invalid email %s, this field cannot contain the following characters: %s"
+    ],
+    "Invalid phone number": "Invalid phone number",
+    "Invalid postal code. Example formats: ": "Invalid postal code. Example formats: ",
+    "Invalid postal code. Please use a format like ": "Invalid postcode. Please use a format like ",
+    "KIT CODE": "KIT CODE",
+    "Kit Code Card": "Kit Code Card",
+    "LAST NAME": "SURNAME",
+    "Lower Teeth Open<br />(Aligners In)": "Lower Teeth Open<br />(Aligners In)",
+    "Lower Teeth Open<br />(Aligners Out)": "Lower Teeth Open<br />(Aligners Out)",
+    "Lower teeth": "LOWER TEETH",
+    "Lower, Open": "Lower, Open",
+    "MM": "MM",
+    "Midnight": "Midnight",
+    "Minimum Customer age is %s.": "Minimum Customer age is %s.",
+    "Minimum Guardian age is %s.": "Minimum Guardian age is %s.",
+    "Minimum age requirement is %s.": "Minimum age requirement is %s.",
+    "Minimum age requirement is 12.": "Minimum age requirement is 12.",
+    "Month must be between 1 and 12.": "Month must be between 1 and 12.",
+    "Mouth open, looking down. Make sure your back molars are fully visible.": "Mouth open, looking down. Make sure your back molars are fully visible.",
+    "Mouth open, looking up. Make sure we see your back molars.": "Mouth open, looking up. Make sure we see your back molars.",
+    "Must be exactly ten numbers.": "Must be exactly ten numbers.",
+    "Must be exactly twelve characters.": "Must be exactly twelve characters.",
+    "My Treatment Plan": "My Treatment Plan",
+    "Name On Card": "Name On Card",
+    "Noon": "Noon",
+    "Not tracking properly (movement not as expected)": "Not tracking properly (movement not as expected)",
+    "Notifications": "Notifications",
+    "Now": "Now",
+    "Only new orders will be sent to your default address.": "Only new orders will be sent to your default address.",
+    "PASSWORD": "PASSWORD",
+    "PHONE NUMBER": "PHONE NUMBER",
+    "PROCESSING...": "PROCESSING...",
+    "Password can only contain letters, numbers, spaces and following special characters: +=^$*.[]{}()?-\"!@#%&/\\,><':;|_~`": "Password can only contain letters, numbers, spaces and following special characters: +=^$*.[]{}()?-\"!@#%&/\\,><':;|_~`",
+    "Passwords must be 99 or fewer characters in length.": "Passwords must be 99 or fewer characters in length.",
+    "Passwords must be at least 6 characters in length.": "Passwords must be at least 6 characters in length.",
+    "Passwords must contain at least one lowercase letter": "Passwords must contain at least one lowercase letter",
+    "Passwords must contain at least one uppercase letter": "Passwords must contain at least one uppercase letter",
+    "Phone call": "Phone call",
+    "Photo: Front teeth": "Photo: Front teeth",
+    "Photo: Lower teeth": "Photo: Lower teeth",
+    "Photo: Upper teeth": "Photo: Upper teeth",
+    "Please enter a valid IBAN number.": "Please enter a valid IBAN number.",
+    "Please enter a valid card number.": "Please enter a valid card number.",
+    "Please enter a valid month.": "Please enter a valid month.",
+    "Please enter a valid phone number.": "Please enter a valid phone number.",
+    "Please enter a valid year.": "Please enter a valid year.",
+    "Please enter valid date of day in DD format.": "Please enter valid date of day in DD format.",
+    "Please enter valid date of month in MM format.": "Please enter valid date of month in MM format.",
+    "Please enter valid date of year in YYYY format.": "Please enter valid date of year in YYYY format.",
+    "Please use a different card. We currently do not accept cards with numbers greater than 16 digits.": "Please use a different card. We currently do not accept cards with numbers greater than 16 digits.",
+    "Please use only English alphabet, numbers and/or symbols": "Please use only English alphabet, numbers and/or symbols",
+    "Primary Phone *": "Primary Phone *",
+    "Primary and Alternate can not be the same": "Primary and Alternate can not be the same",
+    "Remove": "Remove",
+    "Remove all": "Remove all",
+    "Results": "Results",
+    "SUBURB": "SUBURB",
+    "Send me texts with my appointment reminder, directions, and offers for my new smile. I agree to the text message terms & conditions.": "Send me texts with my appointment reminder, directions, and offers for my new smile. I agree to the text message terms & conditions.",
+    "Show": "Show",
+    "Single Pay": "Single Pay",
+    "Smileshop Scan": "Smileshop Scan",
+    "Sorry...": "Sorry...",
+    "Straight On, Closed": "Straight On, Closed",
+    "Teeth closed, looking straight ahead. Bite down fully on your back teeth with your natural bite.": "Teeth closed, looking straight ahead. Bite down fully on your back teeth with your natural bite.",
+    "Text message/SMS (I agree to the text message terms & conditions)": "Text message/SMS (I agree to the text message terms & conditions)",
+    "The guardian\u2019s first and last name cannot be the same as the patient.": "The guardian\u2019s first and last name cannot be the same as the patient.",
+    "This is not a valid Email": "This is not a valid Email",
+    "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.": "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.",
+    "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.": "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.",
+    "This value is required.": "This value is required.",
+    "This value is too long. It should have %s characters or fewer.": "This value is too long. It should have %s characters or fewer.",
+    "This value is too long. It should have %s words or fewer.": "This value is too long. It should have %s words or fewer.",
+    "This value is too short. It should have %s characters or more.": "This value is too short. It should have %s characters or more.",
+    "This value is too short. It should have %s words or more.": "This value is too short. It should have %s words or more.",
+    "This value length is invalid. It should be between %s and %s characters long.": "This value length is invalid. It should be between %s and %s characters long.",
+    "This value length is invalid. It should be between %s and %s words long.": "This value length is invalid. It should be between %s and %s words long.",
+    "This value seems to be invalid.": "This value seems to be invalid.",
+    "This value should be a valid date (YYYY-MM-DD).": "This value should be a valid date (YYYY-MM-DD).",
+    "This value should be a valid date.": "This value should be a valid date.",
+    "This value should be a valid email.": "This value should be a valid email.",
+    "This value should be a valid integer.": "This value should be a valid integer.",
+    "This value should be a valid number.": "This value should be a valid number.",
+    "This value should be a valid url.": "This value should be a valid url.",
+    "This value should be alphanumeric.": "This value should be alphanumeric.",
+    "This value should be between %s and %s.": "This value should be between %s and %s.",
+    "This value should be different.": "This value should be different.",
+    "This value should be digits.": "This value should be digits.",
+    "This value should be greater or equal.": "This value should be greater or equal.",
+    "This value should be greater than or equal to %s.": "This value should be greater than or equal to %s.",
+    "This value should be greater.": "This value should be greater.",
+    "This value should be less or equal.": "This value should be less or equal.",
+    "This value should be less.": "This value should be less.",
+    "This value should be lower than or equal to %s.": "This value should be lower than or equal to %s.",
+    "This value should be the same.": "This value should be the same.",
+    "This value should not be blank.": "This value should not be blank.",
+    "To ensure that your CareCredit order is processed correctly, please call %s.": "To make sure that your CareCredit order is processed correctly, please call %s.",
+    "Today": "Today",
+    "Tomorrow": "Tomorrow",
+    "Too long / Too short (Molar coverage off)": "Too long / Too short (Molar coverage off)",
+    "Too loose / Falling off / Rocking side to side": "Too loose / Falling off / Rocking side to side",
+    "Too tight / Too much pressure": "Too tight / Too much pressure",
+    "Turn your phone upside down to take this photo!": "Turn your phone upside down to take this photo!",
+    "Type": "type",
+    "Type into this box to filter down the list of available %s.": "Type into this box to filter down the list of available %s.",
+    "Upper Teeth Open<br />(Aligners In)": "Upper Teeth Open<br />(Aligners In)",
+    "Upper Teeth Open<br />(Aligners Out)": "Upper Teeth Open<br />(Aligners Out)",
+    "Upper teeth": "UPPER TEETH",
+    "Upper, Open": "Upper, Open",
+    "User with the given email already exists. Please use another email.": "User with the given email already exists. Please use another email.",
+    "VENDOR": "VENDOR",
+    "Warped / Distorted aligner": "Warped / Distorted aligner",
+    "We're Grading Your Tooth Test": "We're Grading Your Tooth Test",
+    "We're unable to process your retainer subscription. Please call Customer Care at 800-688-4010 to place your order.": "We're unable to process your retainer subscription. Please call Customer Care at 800-688-4010 to place your order.",
+    "YYYY": "YYYY",
+    "Year should not be greater than current year.": "Year should not be greater than current year.",
+    "Year should not be less than 1900.": "Year should not be less than 1900.",
+    "Yesterday": "Yesterday",
+    "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.": "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.",
+    "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.": "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.",
+    "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.": "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.",
+    "You must select %s choices or fewer.": "You must select %s choices or fewer.",
+    "You must select at least %s choices.": "You must select at least %s choices.",
+    "You must select between %s and %s choices.": "You must select between %s and %s choices.",
+    "Your Email Is Invalid, Please Re-Enter": "Your Email Is Invalid, Please Re-Enter",
+    "Your credit card has expired.": "Your credit card has expired.",
+    "is required": "is required",
+    "optional": "optional"
+  };
+  for (var key in newcatalog) {
+    django.catalog[key] = newcatalog[key];
+  }
+  
+
+  if (!django.jsi18n_initialized) {
+    django.gettext = function(msgid) {
+      var value = django.catalog[msgid];
+      if (typeof(value) == 'undefined') {
+        return msgid;
+      } else {
+        return (typeof(value) == 'string') ? value : value[0];
+      }
+    };
+
+    django.ngettext = function(singular, plural, count) {
+      var value = django.catalog[singular];
+      if (typeof(value) == 'undefined') {
+        return (count == 1) ? singular : plural;
+      } else {
+        return value[django.pluralidx(count)];
+      }
+    };
+
+    django.gettext_noop = function(msgid) { return msgid; };
+
+    django.pgettext = function(context, msgid) {
+      var value = django.gettext(context + '\x04' + msgid);
+      if (value.indexOf('\x04') != -1) {
+        value = msgid;
+      }
+      return value;
+    };
+
+    django.npgettext = function(context, singular, plural, count) {
+      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.indexOf('\x04') != -1) {
+        value = django.ngettext(singular, plural, count);
+      }
+      return value;
+    };
+
+    django.interpolate = function(fmt, obj, named) {
+      if (named) {
+        return fmt.replace(/%\(\w+\)s/g, function(match){return String(obj[match.slice(2,-2)])});
+      } else {
+        return fmt.replace(/%s/g, function(match){return String(obj.shift())});
+      }
+    };
+
+
+    /* formatting library */
+
+    django.formats = {
+    "DATETIME_FORMAT": "l, F j, Y P T",
+    "DATETIME_INPUT_FORMATS": [
+      "%Y-%m-%d %H:%M:%S",
+      "%Y-%m-%d %H:%M:%S.%f",
+      "%Y-%m-%d %H:%M",
+      "%Y-%m-%d",
+      "%d/%m/%Y %H:%M:%S",
+      "%d/%m/%Y %H:%M:%S.%f",
+      "%d/%m/%Y %H:%M",
+      "%d/%m/%Y",
+      "%d/%m/%y %H:%M:%S",
+      "%d/%m/%y %H:%M:%S.%f",
+      "%d/%m/%y %H:%M",
+      "%d/%m/%y"
+    ],
+    "DATE_FORMAT": "j M Y",
+    "DATE_INPUT_FORMATS": [
+      "%d/%m/%Y",
+      "%d/%m/%y",
+      "%Y-%m-%d"
+    ],
+    "DECIMAL_SEPARATOR": ".",
+    "FIRST_DAY_OF_WEEK": "1",
+    "MONTH_DAY_FORMAT": "j F",
+    "NUMBER_GROUPING": "3",
+    "SHORT_DATETIME_FORMAT": "d/m/Y P",
+    "SHORT_DATE_FORMAT": "d/m/Y",
+    "THOUSAND_SEPARATOR": ",",
+    "TIME_FORMAT": "P",
+    "TIME_INPUT_FORMATS": [
+      "%H:%M:%S",
+      "%H:%M:%S.%f",
+      "%H:%M"
+    ],
+    "YEAR_MONTH_FORMAT": "F Y"
+  };
+
+    django.get_format = function(format_type) {
+      var value = django.formats[format_type];
+      if (typeof(value) == 'undefined') {
+        return format_type;
+      } else {
+        return value;
+      }
+    };
+
+    /* add to global namespace */
+    globals.pluralidx = django.pluralidx;
+    globals.gettext = django.gettext;
+    globals.ngettext = django.ngettext;
+    globals.gettext_noop = django.gettext_noop;
+    globals.pgettext = django.pgettext;
+    globals.npgettext = django.npgettext;
+    globals.interpolate = django.interpolate;
+    globals.get_format = django.get_format;
+
+    django.jsi18n_initialized = true;
+  }
+
+}(this));
+

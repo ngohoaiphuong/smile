@@ -1,0 +1,355 @@
+
+
+(function(globals) {
+
+  var django = globals.django || (globals.django = {});
+
+  
+  django.pluralidx = function(count) { return (count == 1) ? 0 : 1; };
+  
+
+  /* gettext library */
+
+  django.catalog = django.catalog || {};
+  
+  var newcatalog = {
+    "%(sel)s of %(cnt)s selected": [
+      "%(sel)s de %(cnt)s seleccionado",
+      "%(sel)s de  %(cnt)s seleccionados"
+    ],
+    "3-digit number on the back of your card": "n\u00famero de 3 d\u00edgitos en el dorso de tu tarjeta",
+    "4-digit number on the back of your card": "n\u00famero de 4 d\u00edgitos en el dorso de tu tarjeta",
+    "6 a.m.": "6 a.m.",
+    "6 p.m.": "6 p.m.",
+    "<br>This seems to be a valid postal code for %s. Click <div class=\"country-chooser-link jsCountryChooserButton\"><span>here</span></div> to find our service areas in %s.": "<br>Este parece ser un c\u00f3digo postal v\u00e1lido para %s. Haga clic <div class=\"country-chooser-link jsCountryChooserButton\"><span>aqu\u00ed</span></div> para encontrar nuestras \u00e1reas de servicio en %s.",
+    "ADDRESS LINE 1": "Direcci\u00f3n 1",
+    "ADDRESS LINE 2": "Direcci\u00f3n 2",
+    "Account Information": "Datos de la cuenta",
+    "Address Book": "Libreta de direcciones",
+    "Aligner Fit": "Ajuste de los alineadores",
+    "Aligners <strong>IN</strong>, natural bite, make sure we can see your upper and lower gum-line.": "<strong>CON</strong> alineadores, mordida natural; aseg\u00farese de que veamos la l\u00ednea de las enc\u00edas superior e inferior.",
+    "Aligners <strong>OUT</strong> mouth open with tongue on the roof of your mouth, looking up, make sure we see your back molars.": "<strong>SIN</strong> alineadores, boca abierta con la lengua apoyada sobre el paladar, mirando hacia arriba; aseg\u00farese de que veamos sus molares traseros.",
+    "Aligners <strong>OUT</strong>, mouth open with tongue on the roof of your mouth, looking down, make sure we see your back molars.": "<strong>SIN</strong> alineadores, boca abierta con la lengua apoyada sobre el paladar, mirando hacia abajo; aseg\u00farese de que veamos sus molares traseros.",
+    "Alternate Phone": "Tel\u00e9fono alternativo",
+    "April": "Abril",
+    "Are you sure you want to change tabs without saving the page first?": "\u00bfEst\u00e1s seguro de que desea cambiar de pesta\u00f1as sin guardar antes la p\u00e1gina?",
+    "Are you sure you want to remove the discount code?": "\u00bfEst\u00e1s seguro de que deseas eliminar el c\u00f3digo de descuento?",
+    "August": "Agosto",
+    "Austria": "Austria",
+    "Available %s": "%s Disponibles",
+    "BROWSE": "EXPLORAR",
+    "Billing Address": "Direcci\u00f3n de facturaci\u00f3n",
+    "Billing Information": "Datos de facturaci\u00f3n",
+    "Bite issues/midline issues": "Problemas de mordida/l\u00ednea media",
+    "CITY": "Ciudad",
+    "CVC": "CVC",
+    "CVC is too short.": "El CVC es demasiado corto.",
+    "CVC value is required.": "El valor del CVC es obligatorio.",
+    "CVC value should be digits.": "El valor del CVC debe ser en d\u00edgitos.",
+    "Cancel": "Cancelar",
+    "Card Details Required": "Se requieren los detalles de la tarjeta",
+    "Card Number": "N\u00famero de tarjeta",
+    "Choose": "Elegir",
+    "Choose a Date": "Elija una fecha",
+    "Choose a Time": "Elija una hora",
+    "Choose a time": "Elija una hora",
+    "Choose all": "Selecciona todos",
+    "Chosen %s": "%s elegidos",
+    "Click to choose all %s at once.": "Haga clic para seleccionar todos los %s de una vez",
+    "Click to remove all chosen %s at once.": "Haz clic para eliminar todos los %s elegidos",
+    "Date must be between 1 and 31.": "La fecha debe ser un n\u00famero entre 1 y 31.",
+    "December": "Diciembre",
+    "Didn't wear aligners as expected": "No us\u00f3 los alineadores como se esperaba",
+    "Direct mail": "Correo directo.",
+    "EMAIL ADDRESS": "Direcci\u00f3n de correo electr\u00f3nico",
+    "Email": "Correo electr\u00f3nico",
+    "Enter your %s to see if we serve your area.": "Ingresa tu %s para ver si atendemos en tu zona.",
+    "Error connecting to server.": "Error al conectarse al servidor.",
+    "Expiration date month is required.": "El mes de la fecha de vencimiento es obligatorio.",
+    "Expiration date month should be digits.": "El mes de la fecha de vencimiento debe ser en d\u00edgitos.",
+    "Expiration date year is too short. It should have 4 digits.": "El a\u00f1o de la fecha de vencimiento es demasiado corto. Debe tener 4 d\u00edgitos.",
+    "Expiration date year should be digits.": "El a\u00f1o de la fecha de vencimiento debe ser en d\u00edgitos.",
+    "FIRST NAME": "Nombre",
+    "February": "Febrero",
+    "Filter": "Filtro",
+    "Final result does match plan, but not happy with overall results": "El resultado final coincide con el plan, pero no est\u00e1 satisfecho con los resultados generales",
+    "Final result doesn't match plan": "El resultado final no coincide con el plan",
+    "Front Closed<br />(Aligners In)": "Frente, boca cerrada<br />(Con alineadores)",
+    "Front Closed<br />(Aligners Out)": "Frente, boca cerrada<br />(Sin alineadores)",
+    "Front teeth": "DIENTES FRONTALES",
+    "Gapping between teeth and aligner": "Hay un espacio entre los dientes y el alineador",
+    "Germany": "Alemania",
+    "Hang On\u2026": "Espera...",
+    "Hide": "Esconder",
+    "If the patient is under ": "Si el paciente tiene menos de ",
+    "If the patient is under %s, you need to be the guardian to continue.": "Si el paciente tiene menos de %s, debe ser el tutor para poder continuar.",
+    "If you're under ": "Si tiene menos de ",
+    "If you're under %s, you cannot register. Please select \"this order is for somebody else\" to continue.": "Si tiene menos de %s, no puede registrarse. Seleccione \"Este pedido es para otra persona\" para continuar.",
+    "Impression Kit": "Kit de impresi\u00f3n",
+    "Invalid email %s, This field cannot contain the following character: %s": [
+      "Correo electr\u00f3nico inv\u00e1lido %s. Este campo no puede contener el siguiente car\u00e1cter: %s",
+      "Correo electr\u00f3nico inv\u00e1lido %s. Este campo no puede contener los siguientes caracteres: %s"
+    ],
+    "Invalid phone number": "N\u00famero de tel\u00e9fono inv\u00e1lido",
+    "Invalid postal code. Example formats: ": "C\u00f3digo postal inv\u00e1lido. Ejemplos de formatos: ",
+    "Invalid postal code. Please use a format like ": "C\u00f3digo postal inv\u00e1lido. Usa un formato como ",
+    "January": "Enero",
+    "July": "Julio",
+    "June": "Junio",
+    "KIT CODE": "C\u00d3DIGO DEL KIT",
+    "Kit Code Card": "Tarjeta de c\u00f3digo del kit",
+    "LAST NAME": "Apellido",
+    "Lower Teeth Open<br />(Aligners In)": "Dientes inferiores, boca abierta<br />(Con alineadores)",
+    "Lower Teeth Open<br />(Aligners Out)": "Dientes inferiores, boca abierta<br />(Sin alineadores)",
+    "Lower teeth": "DIENTES INFERIORES",
+    "Lower, Open": "Inferior, abierto",
+    "MM": "MM",
+    "March": "Marzo",
+    "May": "Mayo",
+    "Midnight": "Medianoche",
+    "Minimum Customer age is %s.": "La edad m\u00ednima para los clientes es de %s.",
+    "Minimum Guardian age is %s.": "La edad m\u00ednima para los tutores es de %s.",
+    "Minimum age requirement is %s.": "La edad m\u00ednima requerida es de %s a\u00f1os.",
+    "Minimum age requirement is 12.": "La edad m\u00ednima requerida es de 12 a\u00f1os.",
+    "Month must be between 1 and 12.": "El mes debe ser un n\u00famero entre 1 y 12.",
+    "Mouth open, looking down. Make sure your back molars are fully visible.": "Con la boca abierta y la mirada hacia abajo. Aseg\u00farate de que tus molares traseros queden completamente visibles.",
+    "Mouth open, looking up. Make sure we see your back molars.": "Con la boca abierta y la mirada hacia arriba. Aseg\u00farate de que veamos tus molares traseros.",
+    "Must be exactly ten numbers.": "Debe tener exactamente diez n\u00fameros.",
+    "Must be exactly twelve characters.": "Debe tener exactamente doce caracteres.",
+    "My Treatment Plan": "Mi plan de tratamiento",
+    "Name On Card": "Nombre en la tarjeta",
+    "Noon": "Mediod\u00eda",
+    "Not tracking properly (movement not as expected)": "No tensionan correctamente (el movimiento no es como se esperaba)",
+    "Note: You are %s hour ahead of server time.": [
+      "Nota: Usted esta a %s horas por delante de la hora del servidor.",
+      "Nota: Usted va %s horas por delante de la hora del servidor."
+    ],
+    "Note: You are %s hour behind server time.": [
+      "Nota: Usted esta a %s hora de retraso de tiempo de servidor.",
+      "Nota: Usted va %s horas por detr\u00e1s de la hora del servidor."
+    ],
+    "Notifications": "Notificaciones",
+    "November": "Noviembre",
+    "Now": "Ahora",
+    "October": "Octubre",
+    "Only new orders will be sent to your default address.": "Se enviar\u00e1n solo los pedidos nuevos a su direcci\u00f3n predeterminada.",
+    "PASSWORD": "CONTRASE\u00d1A",
+    "PHONE NUMBER": "N\u00famero de tel\u00e9fono",
+    "PROCESSING...": "PROCESANDO...",
+    "Password can only contain letters, numbers, spaces and following special characters: +=^$*.[]{}()?-\"!@#%&/\\,><':;|_~`": "La contrase\u00f1a solo puede contener letras, n\u00fameros, espacios y los siguientes caracteres especiales: +=^$*.[]{}()?-\"!@#%&/\\,><':;|_~`",
+    "Passwords must be 99 or fewer characters in length.": "Las contrase\u00f1as deben tener 99 o menos caracteres.",
+    "Passwords must be at least 6 characters in length.": "Las contrase\u00f1as deben tener, al menos, 6 caracteres.",
+    "Passwords must contain at least one lowercase letter": "Las contrase\u00f1as deben contener al menos una letra min\u00fascula",
+    "Passwords must contain at least one uppercase letter": "Las contrase\u00f1as deben contener, al menos, una letra may\u00fascula",
+    "Phone call": "Llamada telef\u00f3nica.",
+    "Photo: Front teeth": "Foto: Dientes frontales",
+    "Photo: Lower teeth": "Foto: Dientes inferiores",
+    "Photo: Upper teeth": "Foto: Dientes superiores",
+    "Please enter a valid IBAN number.": "Ingresa un n\u00famero IBAN v\u00e1lido.",
+    "Please enter a valid card number.": "Ingresa un n\u00famero de tarjeta v\u00e1lido.",
+    "Please enter a valid month.": "Ingresa un mes v\u00e1lido.",
+    "Please enter a valid phone number.": "Ingresa un n\u00famero de tel\u00e9fono v\u00e1lido.",
+    "Please enter a valid year.": "Ingresa un a\u00f1o v\u00e1lido.",
+    "Please enter valid date of day in DD format.": "Ingresa un d\u00eda v\u00e1lido en formato DD.",
+    "Please enter valid date of month in MM format.": "Ingresa un mes v\u00e1lido en formato MM.",
+    "Please enter valid date of year in YYYY format.": "Ingresa un a\u00f1o v\u00e1lido en formato AAAA.",
+    "Please use a different card. We currently do not accept cards with numbers greater than 16 digits.": "Usa una tarjeta diferente. Por el momento, no aceptamos tarjetas con m\u00e1s de 16 d\u00edgitos.",
+    "Please use only English alphabet, numbers and/or symbols": "Utiliza solo el alfabeto ingl\u00e9s, n\u00fameros o s\u00edmbolos",
+    "Primary Phone *": "Tel\u00e9fono principal *",
+    "Primary and Alternate can not be the same": "El tel\u00e9fono primario y el alternativo no pueden ser iguales",
+    "Remove": "Eliminar",
+    "Remove all": "Eliminar todos",
+    "Results": "Resultados",
+    "SUBURB": "SUBURBIO",
+    "Send me texts with my appointment reminder, directions, and offers for my new smile. I agree to the text message terms & conditions.": "Quiero recibir mensajes de texto con recordatorios de citas, indicaciones y ofertas para mi nueva sonrisa. Acepto los t\u00e9rminos y las condiciones sobre mensajes de texto.",
+    "September": "Septiembre",
+    "Show": "Mostrar",
+    "Single Pay": "Pago \u00fanico",
+    "Smileshop Scan": "Escaneo en un SmileShop",
+    "Sorry...": "Lo sentimos...",
+    "Straight On, Closed": "Con la mirada al frente, boca cerrada",
+    "Teeth closed, looking straight ahead. Bite down fully on your back teeth with your natural bite.": "Con los dientes cerrados y la mirada al frente. Muerde de forma natural con todos los dientes traseros.",
+    "Text message/SMS (I agree to the text message terms & conditions)": "Mensaje de texto/SMS (Acepto los t\u00e9rminos y condiciones sobre mensajes de texto)",
+    "The guardian\u2019s first and last name cannot be the same as the patient.": "El nombre y el apellido del tutor no pueden ser iguales a los del paciente.",
+    "This is not a valid Email": "Este no es un correo electr\u00f3nico v\u00e1lido",
+    "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.": "Esta es la lista de %s disponibles. Puede elegir algunos seleccion\u00e1ndolos en la caja inferior y luego haciendo clic en la flecha \"Elegir\" que hay entre las dos cajas.",
+    "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.": "Esta es la lista de los %s elegidos. Puede elmininar algunos seleccion\u00e1ndolos en la caja inferior y luego haciendo click en la flecha \"Eliminar\" que hay entre las dos cajas.",
+    "This value is required.": "Este valor es obligatorio.",
+    "This value is too long. It should have %s characters or fewer.": "Este valor es demasiado largo. Debe tener %s caracteres o menos.",
+    "This value is too long. It should have %s words or fewer.": "Este valor es demasiado largo. Debe tener %s palabras o menos.",
+    "This value is too short. It should have %s characters or more.": "Este valor es demasiado corto. Debe tener %s caracteres o m\u00e1s.",
+    "This value is too short. It should have %s words or more.": "Este valor es demasiado corto. Debe tener %s palabras o m\u00e1s.",
+    "This value length is invalid. It should be between %s and %s characters long.": "La longitud de este valor no es v\u00e1lida. Debe tener entre %s y %s caracteres.",
+    "This value length is invalid. It should be between %s and %s words long.": "La longitud de este valor no es v\u00e1lida. Debe tener entre %s y %s palabras.",
+    "This value seems to be invalid.": "Este valor parece ser inv\u00e1lido.",
+    "This value should be a valid date (YYYY-MM-DD).": "Este valor debe ser una fecha v\u00e1lida (AAAA-MM-DD).",
+    "This value should be a valid date.": "Este valor debe ser una fecha v\u00e1lida.",
+    "This value should be a valid email.": "Este valor debe ser un correo electr\u00f3nico v\u00e1lido.",
+    "This value should be a valid integer.": "Este valor debe ser un n\u00famero entero v\u00e1lido.",
+    "This value should be a valid number.": "Este valor debe ser un n\u00famero v\u00e1lido.",
+    "This value should be a valid url.": "Este valor debe ser una url v\u00e1lida.",
+    "This value should be alphanumeric.": "Este valor debe ser alfanum\u00e9rico.",
+    "This value should be between %s and %s.": "Este valor debe estar entre %s y %s.",
+    "This value should be different.": "Este valor debe ser diferente.",
+    "This value should be digits.": "Este valor debe ser en d\u00edgitos.",
+    "This value should be greater or equal.": "Este valor debe ser mayor o igual.",
+    "This value should be greater than or equal to %s.": "Este valor debe ser mayor o igual que %s.",
+    "This value should be greater.": "Este valor debe ser mayor.",
+    "This value should be less or equal.": "Este valor debe ser menor o igual.",
+    "This value should be less.": "Este valor debe ser menor.",
+    "This value should be lower than or equal to %s.": "Este valor debe ser menor o igual que %s.",
+    "This value should be the same.": "Este valor debe ser el mismo.",
+    "This value should not be blank.": "Este valor no debe estar en blanco.",
+    "To ensure that your CareCredit order is processed correctly, please call %s.": "Para garantizar que su pedido de CareCredit se procese correctamente, llame al %s.",
+    "Today": "Hoy",
+    "Tomorrow": "Ma\u00f1ana",
+    "Too long / Too short (Molar coverage off)": "Demasiado largos / Demasiado cortos (los molares no est\u00e1n bien cubiertos)",
+    "Too loose / Falling off / Rocking side to side": "Demasiado sueltos / Se caen / Se mueven de un lado a otro",
+    "Too tight / Too much pressure": "Demasiado apretados / Demasiada presi\u00f3n",
+    "Turn your phone upside down to take this photo!": "\u00a1D\u00e9 vuelta su tel\u00e9fono para tomar esta foto!",
+    "Type": "tipo",
+    "Type into this box to filter down the list of available %s.": "Escriba en este cuadro para filtrar la lista de %s disponibles",
+    "Upper Teeth Open<br />(Aligners In)": "Dientes superiores, boca abierta<br />(Con alineadores)",
+    "Upper Teeth Open<br />(Aligners Out)": "Dientes superiores, boca abierta<br />(Sin alineadores)",
+    "Upper teeth": "DIENTES SUPERIORES",
+    "Upper, Open": "Superior, abierto",
+    "User with the given email already exists. Please use another email.": "Ya existe un usuario con ese correo electr\u00f3nico. Usa otro correo electr\u00f3nico.",
+    "VENDOR": "PROVEEDOR",
+    "Warped / Distorted aligner": "Alineador deformado / torcido",
+    "We're Grading Your Tooth Test": "Estamos calificando tu prueba dental",
+    "We're unable to process your retainer subscription. Please call Customer Care at 800-688-4010 to place your order.": "No podemos procesar tu suscripci\u00f3n a los retenedores. Comun\u00edcate con Atenci\u00f3n al Cliente al 800-688-4010 para hacer tu pedido.",
+    "YYYY": "AAAA",
+    "Year should not be greater than current year.": "El a\u00f1o no debe ser mayor que el a\u00f1o actual.",
+    "Year should not be less than 1900.": "El a\u00f1o no debe ser inferior a 1900.",
+    "Yesterday": "Ayer",
+    "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.": "Ha seleccionado una acci\u00f3n y no hs hecho ning\u00fan cambio en campos individuales. Probablemente est\u00e9 buscando el bot\u00f3n Ejecutar en lugar del bot\u00f3n Guardar.",
+    "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.": "Ha seleccionado una acci\u00f3n, pero no ha guardado los cambios en los campos individuales todav\u00eda. Pulse OK para guardar. Tendr\u00e1 que volver a ejecutar la acci\u00f3n.",
+    "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.": "Tiene cambios sin guardar en campos editables individuales. Si ejecuta una acci\u00f3n, los cambios no guardados se perder\u00e1n.",
+    "You must select %s choices or fewer.": "Debes seleccionar %s opciones o menos.",
+    "You must select at least %s choices.": "Debes seleccionar, al menos, %s opciones.",
+    "You must select between %s and %s choices.": "Debes seleccionar entre %s y %s opciones.",
+    "Your Email Is Invalid, Please Re-Enter": "Tu correo electr\u00f3nico es inv\u00e1lido; vuelve a ingresarlo",
+    "Your credit card has expired.": "Tu tarjeta de cr\u00e9dito ha vencido.",
+    "is required": "es obligatorio",
+    "one letter Friday\u0004F": "V",
+    "one letter Monday\u0004M": "L",
+    "one letter Saturday\u0004S": "S",
+    "one letter Sunday\u0004S": "D",
+    "one letter Thursday\u0004T": "J",
+    "one letter Tuesday\u0004T": "M",
+    "one letter Wednesday\u0004W": "M",
+    "optional": "opcional"
+  };
+  for (var key in newcatalog) {
+    django.catalog[key] = newcatalog[key];
+  }
+  
+
+  if (!django.jsi18n_initialized) {
+    django.gettext = function(msgid) {
+      var value = django.catalog[msgid];
+      if (typeof(value) == 'undefined') {
+        return msgid;
+      } else {
+        return (typeof(value) == 'string') ? value : value[0];
+      }
+    };
+
+    django.ngettext = function(singular, plural, count) {
+      var value = django.catalog[singular];
+      if (typeof(value) == 'undefined') {
+        return (count == 1) ? singular : plural;
+      } else {
+        return value[django.pluralidx(count)];
+      }
+    };
+
+    django.gettext_noop = function(msgid) { return msgid; };
+
+    django.pgettext = function(context, msgid) {
+      var value = django.gettext(context + '\x04' + msgid);
+      if (value.indexOf('\x04') != -1) {
+        value = msgid;
+      }
+      return value;
+    };
+
+    django.npgettext = function(context, singular, plural, count) {
+      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.indexOf('\x04') != -1) {
+        value = django.ngettext(singular, plural, count);
+      }
+      return value;
+    };
+
+    django.interpolate = function(fmt, obj, named) {
+      if (named) {
+        return fmt.replace(/%\(\w+\)s/g, function(match){return String(obj[match.slice(2,-2)])});
+      } else {
+        return fmt.replace(/%s/g, function(match){return String(obj.shift())});
+      }
+    };
+
+
+    /* formatting library */
+
+    django.formats = {
+    "DATETIME_FORMAT": "j \\d\\e F \\d\\e Y \\a \\l\\a\\s H:i",
+    "DATETIME_INPUT_FORMATS": [
+      "%d/%m/%Y %H:%M:%S",
+      "%d/%m/%Y %H:%M:%S.%f",
+      "%d/%m/%Y %H:%M",
+      "%d/%m/%y %H:%M:%S",
+      "%d/%m/%y %H:%M:%S.%f",
+      "%d/%m/%y %H:%M",
+      "%Y-%m-%d %H:%M:%S",
+      "%Y-%m-%d %H:%M:%S.%f",
+      "%Y-%m-%d %H:%M",
+      "%Y-%m-%d"
+    ],
+    "DATE_FORMAT": "j \\d\\e F \\d\\e Y",
+    "DATE_INPUT_FORMATS": [
+      "%d/%m/%Y",
+      "%d/%m/%y",
+      "%Y-%m-%d"
+    ],
+    "DECIMAL_SEPARATOR": ",",
+    "FIRST_DAY_OF_WEEK": "1",
+    "MONTH_DAY_FORMAT": "j \\d\\e F",
+    "NUMBER_GROUPING": "3",
+    "SHORT_DATETIME_FORMAT": "d/m/Y H:i",
+    "SHORT_DATE_FORMAT": "d/m/Y",
+    "THOUSAND_SEPARATOR": ".",
+    "TIME_FORMAT": "H:i",
+    "TIME_INPUT_FORMATS": [
+      "%H:%M:%S",
+      "%H:%M:%S.%f",
+      "%H:%M"
+    ],
+    "YEAR_MONTH_FORMAT": "F \\d\\e Y"
+  };
+
+    django.get_format = function(format_type) {
+      var value = django.formats[format_type];
+      if (typeof(value) == 'undefined') {
+        return format_type;
+      } else {
+        return value;
+      }
+    };
+
+    /* add to global namespace */
+    globals.pluralidx = django.pluralidx;
+    globals.gettext = django.gettext;
+    globals.ngettext = django.ngettext;
+    globals.gettext_noop = django.gettext_noop;
+    globals.pgettext = django.pgettext;
+    globals.npgettext = django.npgettext;
+    globals.interpolate = django.interpolate;
+    globals.get_format = django.get_format;
+
+    django.jsi18n_initialized = true;
+  }
+
+}(this));
+

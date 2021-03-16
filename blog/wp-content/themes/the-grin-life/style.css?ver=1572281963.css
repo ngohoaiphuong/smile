@@ -1,0 +1,30 @@
+/*
+Theme name: The Grin Life
+Description: Custom Theme
+*/
+
+/*
+	Source post-css styles are located in the postcss directory.
+	The compiled bundle is in assets/bundle.css; The README.md
+	file contains instructions how to get the compilation
+	process up & running.
+
+	If you need to make a quick fix, feel free to add CSS
+	below this comment. It will override bundle.css styles.
+*/
+
+p {  }
+
+body.home .pinit-wrapper {display: none !important;}
+
+body span[data-pin-log="button_pinit_floating"] { z-index: 1 !important;  }
+
+.paging-alt .paging__next-wrap span { min-width: 137px;  }
+.paging-alt .paging__next-wrap .paging__label { right: -45px; }
+
+.section-post-single .post-fixed-button { bottom: 18px; width: 210px;}
+
+/* Fixes */
+body.has-open-search .search-wrapper {
+	position: fixed !important;
+}
